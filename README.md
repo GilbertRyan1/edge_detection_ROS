@@ -94,7 +94,7 @@ roslaunch edge_detector_pkg2 edge_task3.launch
 # terminal 3
 cd ~/catkin_ws/src/edge_detector_pkg2/data/edge_detection_data
 rosbag play --clock -l withpointcloud.bag
-
+---
 **File Structure**
 
 edge_detector_pkg2/
@@ -113,7 +113,9 @@ edge_detector_pkg2/
 │ ├── edge_bag_rviz.launch
 │ └── edge_task3.launch
 ├── data/
-│ └── edge_detection_data/
+│ └── image_1.png
+  └── image_1_result.png
 ├── package.xml
 ├── CMakeLists.txt
 ├── README.md
+---
