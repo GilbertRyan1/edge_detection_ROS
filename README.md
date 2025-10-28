@@ -113,7 +113,7 @@ edge_detector_pkg2/
 │ ├── edge_bag_rviz.launch
 │ └── edge_task3.launch
 ├── data/
-│ └── edge_detection_data/images
+│ └── edge_detection_data/
 ├── package.xml
 ├── CMakeLists.txt
 ├── README.md
