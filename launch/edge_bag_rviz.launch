@@ -1,0 +1,18 @@
+<launch>
+    <!-- bag playback uses simulated time -->
+    <param name="/use_sim_time" value="true" />
+
+    <!-- node that republishes rgb frames and draws the edges on top -->
+    <node
+        pkg="edge_detector_pkg2"
+        type="rgb_edge_node.py"
+        name="rgb_edge_node"
+        output="screen" />
+
+    <!-- node that also computes 3D edge points and publishes /edge_points -->
+    <node
+        pkg="edge_detector_pkg2"
+        type="edge_points_node.py"
+        name="edge_points_node"
+        output="screen" />
+</launch>

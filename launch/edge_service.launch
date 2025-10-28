@@ -1,0 +1,8 @@
+<launch>
+    <!-- run the service node that exposes /detect_edges -->
+    <node
+        pkg="edge_detector_pkg2"
+        type="edge_service_node.py"
+        name="edge_service_node"
+        output="screen" />
+</launch>

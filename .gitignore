@@ -1,0 +1,22 @@
+# catkin build outputs
+build/
+devel/
+install/
+
+# ros logs / runtime noise
+*.log
+log/
+.ros/
+*.active
+
+# bag files and generated outputs
+*.bag
+*.png
+*.jpg
+
+# python cache
+__pycache__/
+*.pyc
+
+# rviz temp / recorded configs
+*.rviz
