@@ -1,4 +1,4 @@
-# edge_detector_pkg2
+# Edge Detection and 3D Robot Visualization using ROS
 
 This package covers three tasks:
 
