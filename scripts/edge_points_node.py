@@ -26,16 +26,15 @@ class EdgePointsNode:
         self.cx = None
         self.cy = None
 
-        # last data we saw
         self.last_rgb = None        # color img (bgr)
         self.last_depth = None      # depth in meters (float32)
         self.depth_frame_id = None  # frame from depth header / fallback
 
-        # pubs
+        # publsh
         self.pub_overlay = rospy.Publisher("/edge_detector/rgb_edges", Image, queue_size=1)
         self.pub_cloud   = rospy.Publisher("/edge_points", PointCloud2, queue_size=1)
 
-        # subs
+        # subscribe
         rospy.Subscriber("/camera/color/camera_info", CameraInfo, self.caminfo_cb, queue_size=1)
         rospy.Subscriber("/camera/color/image_raw",   Image,      self.rgb_cb,    queue_size=1)
         rospy.Subscriber("/camera/depth/image_rect_raw", Image,   self.depth_cb,  queue_size=1)
@@ -76,7 +75,7 @@ class EdgePointsNode:
         self.last_depth = depth_m
 
         # frame from depth msg. sometimes rviz cant tf "camera_depth_optical_frame"
-        # just the coorect frame from
+        # just the coorect frame from cuz it leads to error
         cam_frame = msg.header.frame_id
         if cam_frame is None or cam_frame == "" or cam_frame == "camera_depth_optical_frame":
             cam_frame = "camera_color_optical_frame"
@@ -145,7 +144,7 @@ class EdgePointsNode:
         header.stamp    = rospy.Time.now()
         header.frame_id = frame_id  # NOTE: rviz fixed Frame should match or tf must know this
 
-        # make PointCloud2. xyz32 so rviz is happy
+        # make PointCloud2. xyz32 so rviz works
         cloud_msg = pc2.create_cloud_xyz32(header, pts)
 
         # publish cloud of edge points
@@ -154,7 +153,7 @@ class EdgePointsNode:
         #  just for the crosscheck
         rospy.loginfo("pub cloud: %d pts frame=%s" % (len(pts), frame_id))
 
-        # slow down so rviz doesnt go crazy fast
+        # slow down so rviz doesnt go super fast
         rospy.sleep(0.3)
 
 
